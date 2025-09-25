@@ -2,9 +2,9 @@ export module App;
 
 #include <iostream>
 
-import TwoTourists;
+import TwoTouristsSolver;
 import TwoTouristsGenerator;
-import MaxSum;
+import MaxSumSolver;
 import MaxSumGenerator;
 
 namespace interviews {
@@ -16,11 +16,11 @@ namespace interviews {
 
 namespace interviews {
     void App::run() {
-        TwoTourists solver;
+        TwoTouristsSolver solver;
         TwoTouristsGenerator twoTouristsGenerator;
         std::cout << "Max distance: " << solver.solve(twoTouristsGenerator.generate()) << std::endl;
 
-        MaxSum sumSolver;
+        MaxSumSolver sumSolver;
         MaxSumGenerator maxSumGenerator;
         std::cout << "Max sum: " << sumSolver.solve(maxSumGenerator.generate()) << std::endl;
     }

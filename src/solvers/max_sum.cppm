@@ -1,4 +1,4 @@
-export module MaxSum;
+export module MaxSumSolver;
 
 #include <string>
 #include <vector>
@@ -7,7 +7,7 @@ export module MaxSum;
 import SolverBase;
 
 namespace interviews {
-    export class MaxSum : public SolverBase<std::string, int> {
+    export class MaxSumSolver : public SolverBase<std::string, int> {
     public:
         int solve(const std::string&) override;
         
@@ -18,7 +18,7 @@ namespace interviews {
 }
 
 namespace interviews {
-    int MaxSum::solve(const std::string& digits) {
+    int MaxSumSolver::solve(const std::string& digits) {
         if (digits.size() < 4) {
             throw std::invalid_argument("Need at least 4 numbers to select two non-adjacent");
         }
@@ -27,7 +27,7 @@ namespace interviews {
         return getMaxSum(numbers);
     }
 
-    std::vector<int> MaxSum::getAllTwoDigitNumbers(const std::string& digits) {
+    std::vector<int> MaxSumSolver::getAllTwoDigitNumbers(const std::string& digits) {
         std::vector<int> numbers;
         numbers.reserve(digits.size());
         for (size_t i{ 0 }; i + 1< digits.size(); ++i) {
@@ -36,7 +36,7 @@ namespace interviews {
         return numbers;
     }
 
-    int MaxSum::getMaxSum(const std::vector<int>& numbers) {
+    int MaxSumSolver::getMaxSum(const std::vector<int>& numbers) {
         auto maxIter{ std::max_element(numbers.begin(), numbers.end()) };
         int max{ *maxIter };
 

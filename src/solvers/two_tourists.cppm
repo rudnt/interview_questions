@@ -6,14 +6,14 @@ Tourists can not go downhill. Each tourist goes in opposite direction.
 
 Find maximum distance between tourists.
 */
-export module TwoTourists;
+export module TwoTouristsSolver;
 
 #include <vector>
 
 import SolverBase;
 
 namespace interviews {
-    export class TwoTourists : public SolverBase<std::vector<int>, int> {
+    export class TwoTouristsSolver : public SolverBase<std::vector<int>, int> {
     public:
         int solve(const std::vector<int>&) override;
 
@@ -24,7 +24,7 @@ namespace interviews {
 }
 
 namespace interviews {
-    int TwoTourists::solve(const std::vector<int>& elevations) {
+    int TwoTouristsSolver::solve(const std::vector<int>& elevations) {
         size_t left{ 0 };
         size_t right{ 0 };
         int maxDistance{ 0 };
@@ -36,14 +36,14 @@ namespace interviews {
         return maxDistance;
     }
 
-    size_t TwoTourists::moveLeft(const std::vector<int>& elevations, size_t pos) {
+    size_t TwoTouristsSolver::moveLeft(const std::vector<int>& elevations, size_t pos) {
         while (pos > 0 && elevations[pos - 1] == elevations[pos]) {
             --pos;
         }
         return pos;
     }
 
-    size_t TwoTourists::moveRight(const std::vector<int>& elevations, size_t pos) {
+    size_t TwoTouristsSolver::moveRight(const std::vector<int>& elevations, size_t pos) {
         while (pos + 1 < elevations.size() && elevations[pos + 1] < elevations[pos]) {
             ++pos;
         }
