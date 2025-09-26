@@ -1,11 +1,11 @@
-export module GeneratorBase;
+export module IGenerator;
 
 //TODO create docstrings for all public classe/methods
 namespace interviews {
     export template<typename ArgsType>
-    class GeneratorBase {
+    class IGenerator {
     public:
-        virtual ~GeneratorBase() = default;
+        virtual ~IGenerator() = default;
 
         virtual ArgsType generate() = 0;
     };

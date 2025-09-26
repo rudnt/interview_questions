@@ -2,10 +2,10 @@ export module MaxSumGenerator;
 
 #include <string>
 
-import GeneratorBase;
+import IGenerator;
 
 namespace interviews {
-    export class MaxSumGenerator : public GeneratorBase<std::string> {
+    export class MaxSumGenerator : public IGenerator<std::string> {
     public:
         std::string generate() override;
     };

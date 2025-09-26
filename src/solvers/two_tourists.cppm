@@ -10,10 +10,10 @@ export module TwoTouristsSolver;
 
 #include <vector>
 
-import SolverBase;
+import ISolver;
 
 namespace interviews {
-    export class TwoTouristsSolver : public SolverBase<std::vector<int>, int> {
+    export class TwoTouristsSolver : public ISolver<std::vector<int>, int> {
     public:
         int solve(const std::vector<int>&) override;
 

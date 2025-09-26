@@ -3,28 +3,37 @@ export module Mediator;
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <variant>
 
-import SolverBase;
-import GeneratorBase;
+import IGenerator;
+import IMediator;
+import ISolver;
+import ToString;
 
 namespace interviews {
     export template<typename ArgsType, typename ReturnType>
-    class Mediator {
+    class Mediator: public IMediator {
     public:
-        Mediator(GeneratorBase<ArgsType>, SolverBase<ArgsType, ReturnType>);
+        Mediator(
+            std::shared_ptr<IGenerator<ArgsType>> generator,
+            std::shared_ptr<ISolver<ArgsType, ReturnType>> solver
+        );
 
-        void generateProblemData();
-        void solveProblem();
+        void generateProblemData() override;
+        void solveProblem() override;
 
-        std::string getProblemData() const;
-        std::string getSolution() const;
+        std::string getProblemData() const override;
+        std::string getSolution() const override;
 
     private:
-        GeneratorBase<ArgsType> generator;
-        SolverBase<ArgsType, ReturnType> solver;
+        enum class Value { Undefined };
 
-        std::variant<bool, ArgsType> problemData{ false };
-        std::variant<bool, ReturnType> solution{ false };
+    private:
+        std::shared_ptr<IGenerator<ArgsType>> generator;
+        std::shared_ptr<ISolver<ArgsType, ReturnType>> solver;
+
+        std::variant<Value, ArgsType> problemData{ Value::Undefined };
+        std::variant<Value, ReturnType> solution{ Value::Undefined };
 
     private:
         void assertProblemDataSet() const;
@@ -34,26 +43,29 @@ namespace interviews {
 
 namespace interviews {
     template<typename ArgsType, typename ReturnType>
-    Mediator<ArgsType, ReturnType>::Mediator(GeneratorBase<ArgsType> generator, SolverBase<ArgsType, ReturnType> solver) {
+    Mediator<ArgsType, ReturnType>::Mediator(
+        std::shared_ptr<IGenerator<ArgsType>> generator,
+        std::shared_ptr<ISolver<ArgsType, ReturnType>> solver
+    ) {
         this->generator = generator;
         this->solver = solver;
     }
 
     template<typename ArgsType, typename ReturnType>
     void Mediator<ArgsType, ReturnType>::generateProblemData() {
-        problemData = generator.generate();
-        solution = false;
+        problemData = generator->generate();
+        solution = Value::Undefined;
     }
 
     template<typename ArgsType, typename ReturnType>
     void Mediator<ArgsType, ReturnType>::solveProblem() {
         assertProblemDataSet();
-        solution = solver.solve(get<ArgsType>(problemData));
+        solution = solver->solve(std::get<ArgsType>(problemData));
     }
 
     template<typename ArgsType, typename ReturnType>
     void Mediator<ArgsType, ReturnType>::assertProblemDataSet() const {
-        if (!hold_alternative<ArgsType>(problemData)) {
+        if (!std::holds_alternative<ArgsType>(problemData)) {
             throw std::runtime_error("Problem data hasn't been generated yet.");
         }
     }
@@ -61,18 +73,18 @@ namespace interviews {
     template<typename ArgsType, typename ReturnType>
     std::string Mediator<ArgsType, ReturnType>::getProblemData() const {
         assertProblemDataSet();
-        return static_cast<std::string>(get<ArgsType>(problemData));
+        return toString(std::get<ArgsType>(problemData));
     }
 
     template<typename ArgsType, typename ReturnType>
     std::string Mediator<ArgsType, ReturnType>::getSolution() const {
         assertSolutionSet();
-        return static_cast<std::string>(get<ReturnType>(solution));
+        return toString(std::get<ReturnType>(solution));
     }
 
     template<typename ArgsType, typename ReturnType>
     void Mediator<ArgsType, ReturnType>::assertSolutionSet() const {
-        if (!hold_alternative<ReturnType>(solution)) {
+        if (!std::holds_alternative<ReturnType>(solution)) {
             throw std::runtime_error("Problem hasn't been solved yet.");
         }
     }

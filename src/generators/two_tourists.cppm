@@ -2,10 +2,10 @@ export module TwoTouristsGenerator;
 
 #include <vector>
 
-import GeneratorBase;
+import IGenerator;
 
 namespace interviews {
-    export class TwoTouristsGenerator : public GeneratorBase<std::vector<int>> {
+    export class TwoTouristsGenerator : public IGenerator<std::vector<int>> {
     public:
         std::vector<int> generate() override;
     };

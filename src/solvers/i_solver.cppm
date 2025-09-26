@@ -1,9 +1,9 @@
-export module SolverBase;
+export module ISolver;
 
 export template<typename ArgsType, typename ReturnType>
-class SolverBase {
+class ISolver {
 public:
-    virtual ~SolverBase() = default;
+    virtual ~ISolver() = default;
 
     virtual ReturnType solve(const ArgsType& data) = 0;
 };

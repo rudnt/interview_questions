@@ -4,10 +4,10 @@ export module MaxSumSolver;
 #include <vector>
 #include <cstddef>
 
-import SolverBase;
+import ISolver;
 
 namespace interviews {
-    export class MaxSumSolver : public SolverBase<std::string, int> {
+    export class MaxSumSolver : public ISolver<std::string, int> {
     public:
         int solve(const std::string&) override;
         
