@@ -1,8 +1,9 @@
 export module MaxSumSolver;
 
+#include <cstddef>
+#include <ranges>
 #include <string>
 #include <vector>
-#include <cstddef>
 
 import ISolver;
 
@@ -12,7 +13,7 @@ namespace interviews {
         int solve(const std::string&) override;
         
     private:
-        std::vector<int> getAllTwoDigitNumbers(const std::string&);
+        std::vector<int> getAllTwoDigitNumbers(std::string_view);
         int getMaxSum(const std::vector<int>&);
     };
 }
@@ -27,17 +28,18 @@ namespace interviews {
         return getMaxSum(numbers);
     }
 
-    std::vector<int> MaxSumSolver::getAllTwoDigitNumbers(const std::string& digits) {
+    std::vector<int> MaxSumSolver::getAllTwoDigitNumbers(std::string_view digits) {
         std::vector<int> numbers;
         numbers.reserve(digits.size());
         for (size_t i{ 0 }; i + 1< digits.size(); ++i) {
-            numbers.push_back(std::stoi(digits.substr(i, 2)));
+            auto number { digits | std::views::drop(i) | std::views::take(2) };
+            numbers.push_back(std::stoi(std::string(number)));
         }
         return numbers;
     }
 
     int MaxSumSolver::getMaxSum(const std::vector<int>& numbers) {
-        auto maxIter{ std::max_element(numbers.begin(), numbers.end()) };
+        auto maxIter{ std::ranges::max_element(numbers) };
         int max{ *maxIter };
 
         int sumLeft{
