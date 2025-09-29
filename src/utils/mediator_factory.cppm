@@ -9,6 +9,7 @@ import IMediator;
 import MaxSumGenerator;
 import MaxSumSolver;
 import Mediator;
+import NotImplementedError;
 import ProblemName;
 import TwoTouristsSolver;
 import TwoTouristsGenerator;
@@ -34,7 +35,7 @@ namespace interviews {
             return std::make_unique<Mediator<std::vector<int>, int>>(generator, solver);
         }
         default:
-            throw std::invalid_argument("I believe that this problem hasn't been solved yet.");
+            throw NotImplementedError("I believe that this problem hasn't been solved yet.");
         }
     }
 }
