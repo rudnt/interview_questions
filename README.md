@@ -21,5 +21,5 @@ $ cmake --build .
 To launch the app run in the project's root directory:
 
 ```
-$ ./build/my_app
+$ ./build/interview_questions
 ```

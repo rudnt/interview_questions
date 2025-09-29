@@ -15,7 +15,7 @@ file(GLOB_RECURSE MODULES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cppm
 )
 
-add_executable(my_app ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
+add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
 
-target_sources(my_app PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES ${MODULES})
-target_compile_options(my_app PRIVATE -fmodules -Wall -Wextra -Wpedantic)
+target_sources(${PROJECT_NAME} PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES ${MODULES})
+target_compile_options(${PROJECT_NAME} PRIVATE -fmodules -Wall -Wextra -Wpedantic)
