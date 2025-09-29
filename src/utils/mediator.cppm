@@ -7,6 +7,7 @@ export module Mediator;
 
 import IGenerator;
 import IMediator;
+import InvalidStateError;
 import ISolver;
 import ToString;
 
@@ -66,7 +67,7 @@ namespace interviews {
     template<typename ArgsType, typename ReturnType>
     void Mediator<ArgsType, ReturnType>::assertProblemDataSet() const {
         if (!std::holds_alternative<ArgsType>(problemData)) {
-            throw std::runtime_error("Problem data hasn't been generated yet.");
+            throw InvalidStateError("Problem data hasn't been generated yet.");
         }
     }
 
@@ -85,7 +86,7 @@ namespace interviews {
     template<typename ArgsType, typename ReturnType>
     void Mediator<ArgsType, ReturnType>::assertSolutionSet() const {
         if (!std::holds_alternative<ReturnType>(solution)) {
-            throw std::runtime_error("Problem hasn't been solved yet.");
+            throw InvalidStateError("Problem hasn't been solved yet.");
         }
     }
 }
