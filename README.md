@@ -11,9 +11,8 @@
 To build the project run in the project's root directory:
 
 ```
-$ mkdir build && cd build
-$ cmake -G Ninja ..
-$ cmake --build .
+$ cmake -G Ninja -S . -B build
+$ cmake --build build
 ```
 
 ## Run
