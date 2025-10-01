@@ -1,7 +1,9 @@
-export module ToString;
+module;
 
 #include <string>
 #include <vector>
+
+export module ToString;
 
 namespace interviews {
     export template<typename T>

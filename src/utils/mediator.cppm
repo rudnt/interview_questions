@@ -1,4 +1,4 @@
-export module Mediator;
+module;
 
 #include <memory>
 #include <stdexcept>
@@ -10,6 +10,8 @@ import IMediator;
 import InvalidStateError;
 import ISolver;
 import ToString;
+
+export module Mediator;
 
 namespace interviews {
     export template<typename ArgsType, typename ReturnType>

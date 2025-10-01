@@ -1,8 +1,10 @@
-export module TwoTouristsGenerator;
+module;
 
 #include <vector>
 
 import IGenerator;
+
+export module TwoTouristsGenerator;
 
 namespace interviews {
     export class TwoTouristsGenerator : public IGenerator<std::vector<int>> {

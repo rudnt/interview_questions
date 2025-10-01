@@ -1,4 +1,4 @@
-export module MaxSumSolver;
+module;
 
 #include <cstddef>
 #include <ranges>
@@ -6,6 +6,8 @@ export module MaxSumSolver;
 #include <vector>
 
 import ISolver;
+
+export module MaxSumSolver;
 
 namespace interviews {
     export class MaxSumSolver : public ISolver<std::string, int> {
