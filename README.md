@@ -11,7 +11,7 @@
 To build the project run in the project's root directory:
 
 ```
-$ cmake -G Ninja -S . -B build
+$ cmake -G Ninja -S . -B build -DCMAKE_BUILD_TYPE=[debug/release]
 $ cmake --build build
 ```
 
@@ -20,5 +20,5 @@ $ cmake --build build
 To launch the app run in the project's root directory:
 
 ```
-$ ./build/interview_questions
+$ ./build/bin/[debug/release]/interview_questions
 ```
