@@ -1,4 +1,4 @@
-export module App;
+module;
 
 #include <iostream>
 
@@ -10,6 +10,7 @@ import Mediator;
 import MediatorFactory;
 import ProblemName;
 
+export module App;
 namespace interviews {
     export class App {
     public:

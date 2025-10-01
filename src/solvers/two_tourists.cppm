@@ -1,16 +1,10 @@
-/*
-Max distance between two tourists.
-
-We have vector of elevation data and two tourists starting a journey from the same spot.
-Tourists can not go downhill. Each tourist goes in opposite direction.
-
-Find maximum distance between tourists.
-*/
-export module TwoTouristsSolver;
+module;
 
 #include <vector>
 
 import ISolver;
+
+export module TwoTouristsSolver;
 
 namespace interviews {
     export class TwoTouristsSolver : public ISolver<std::vector<int>, int> {

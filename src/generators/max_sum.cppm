@@ -1,8 +1,10 @@
-export module MaxSumGenerator;
+module;
 
 #include <string>
 
 import IGenerator;
+
+export module MaxSumGenerator;
 
 namespace interviews {
     export class MaxSumGenerator : public IGenerator<std::string> {

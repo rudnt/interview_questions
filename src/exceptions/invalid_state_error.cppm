@@ -1,6 +1,8 @@
-export module InvalidStateError;
+module;
 
 #include <stdexcept>
+
+export module InvalidStateError;
 
 namespace interviews {
     export class InvalidStateError: public std::logic_error {

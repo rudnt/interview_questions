@@ -1,4 +1,4 @@
-export module MediatorFactory;
+module;
 
 #include <memory>
 #include <stdexcept>
@@ -13,6 +13,8 @@ import NotImplementedError;
 import ProblemName;
 import TwoTouristsSolver;
 import TwoTouristsGenerator;
+
+export module MediatorFactory;
 
 namespace interviews {
     export class MediatorFactory {

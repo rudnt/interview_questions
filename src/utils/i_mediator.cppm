@@ -1,6 +1,8 @@
-export module IMediator;
+module;
 
 #include <string>
+
+export module IMediator;
 
 namespace interviews {
     export class IMediator {

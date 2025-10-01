@@ -1,6 +1,8 @@
-export module NotImplementedError;
+module;
 
 #include <stdexcept>
+
+export module NotImplementedError;
 
 namespace interviews {
     export class NotImplementedError: public std::logic_error {
