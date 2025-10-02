@@ -23,6 +23,7 @@ TEST(MaxSumGeneratorTest, Generator_CustomInstantiation_GeneratesValidStrings) {
             std::string result = generator.generate();
             EXPECT_FALSE(result.empty());
             EXPECT_GE(result.size(), 4);
+            EXPECT_LE(result.size(), size);
             for (char c : result) {
                 EXPECT_TRUE(std::isdigit(c));
             }
