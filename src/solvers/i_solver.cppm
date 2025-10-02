@@ -1,9 +1,11 @@
 export module ISolver;
 
-export template<typename ArgsType, typename ReturnType>
-class ISolver {
-public:
-    virtual ~ISolver() = default;
+namespace interviews {
+    export template<typename ArgsType, typename ReturnType>
+    class ISolver {
+    public:
+        virtual ~ISolver() = default;
 
-    virtual ReturnType solve(const ArgsType& data) = 0;
-};
+        virtual ReturnType solve(const ArgsType& data) = 0;
+    };
+}
