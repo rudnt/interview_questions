@@ -2,7 +2,6 @@
 
 import NotImplementedError;
 
-
 TEST(NotImplementedErrorTest, What_ReturnsCorrectMessage) {
     std::string msg{ "Test message" };
     interviews::NotImplementedError error(msg);
