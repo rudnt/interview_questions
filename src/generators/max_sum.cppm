@@ -15,6 +15,8 @@ namespace interviews {
         std::string generate() override;
 
     private:
+        std::random_device rd;
+        std::mt19937 mt{rd()};
         std::uniform_int_distribution<int> sizeDistribution;
     };
 }
@@ -29,13 +31,11 @@ namespace interviews {
     }
     
     std::string MaxSumGenerator::generate() {
-        std::random_device rd;
-        std::mt19937 mt(rd());
-        std::uniform_int_distribution digit_dist(0, 9);
-        
-        auto resultSize{ sizeDistribution(mt) };
         std::string result;
+        auto resultSize{ sizeDistribution(mt) };
         result.reserve(resultSize);
+        
+        std::uniform_int_distribution digit_dist(0, 9);
         for (int i{ 0 }; i < resultSize; ++i) {
             result += std::to_string(digit_dist(mt));
         }
