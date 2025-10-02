@@ -35,9 +35,9 @@ namespace interviews {
         auto resultSize{ sizeDistribution(mt) };
         result.reserve(resultSize);
         
-        std::uniform_int_distribution digit_dist(0, 9);
+        std::uniform_int_distribution digitDist(0, 9);
         for (int i{ 0 }; i < resultSize; ++i) {
-            result += std::to_string(digit_dist(mt));
+            result += std::to_string(digitDist(mt));
         }
         return result;
     }
