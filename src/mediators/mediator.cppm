@@ -53,7 +53,7 @@ namespace interviews {
         if (!generator || !solver) {
             throw std::invalid_argument("Generator and solver must not be nullptr.");
         }
-        
+
         this->generator = generator;
         this->solver = solver;
     }
