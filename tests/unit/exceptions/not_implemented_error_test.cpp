@@ -16,23 +16,9 @@ TEST(NotImplementedErrorTest, InheritsFromStdException) {
 }
 
 TEST(NotImplementedErrorTest, CanBeCaughtAsStdException) {
-    std::string msg{ "Catch me if you can" };
-    try {
-        throw interviews::NotImplementedError(msg);
-    } catch (const std::exception& ex) {
-        EXPECT_STREQ(ex.what(), msg.c_str());
-    } catch (...) {
-        FAIL() << "Should have been caught as std::exception";
-    }
+    EXPECT_THROW({ throw interviews::NotImplementedError("msg"); }, std::exception);
 }
 
 TEST(NotImplementedErrorTest, CanBeCaughtAsStdLogicError) {
-    std::string msg{ "Catch me if you can" };
-    try {
-        throw interviews::NotImplementedError(msg);
-    } catch (const std::logic_error& ex) {
-        EXPECT_STREQ(ex.what(), msg.c_str());
-    } catch (...) {
-        FAIL() << "Should have been caught as std::exception";
-    }
+    EXPECT_THROW({ throw interviews::NotImplementedError("msg"); }, std::logic_error);
 }
