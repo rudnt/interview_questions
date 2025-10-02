@@ -74,12 +74,14 @@ TEST(ToStringTest, StringsVectorToString) {
     EXPECT_EQ(interviews::toString(std::vector<std::string>{"Test", "String", "123!"}), R"([Test, String, 123!])");
     EXPECT_EQ(interviews::toString(std::vector<std::string>{"Single"}), R"([Single])");
 }
+
 TEST(ToStringTest, BoolsVectorToString) {
     EXPECT_EQ(interviews::toString(std::vector<bool>{}), "[]");
     EXPECT_EQ(interviews::toString(std::vector<bool>{true, false, true}), "[true, false, true]");
     EXPECT_EQ(interviews::toString(std::vector<bool>{false, false, false}), "[false, false, false]");
     EXPECT_EQ(interviews::toString(std::vector<bool>{true}), "[true]");
 }
+
 TEST(ToStringTest, CharsVectorToString) {
     EXPECT_EQ(interviews::toString(std::vector<char>{}), "[]");
     EXPECT_EQ(interviews::toString(std::vector<char>{'a', 'b', 'c'}), "[a, b, c]");
