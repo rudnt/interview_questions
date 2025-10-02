@@ -50,6 +50,10 @@ namespace interviews {
         std::shared_ptr<IGenerator<ArgsType>> generator,
         std::shared_ptr<ISolver<ArgsType, ReturnType>> solver
     ) {
+        if (!generator || !solver) {
+            throw std::invalid_argument("Generator and solver must not be nullptr.");
+        }
+        
         this->generator = generator;
         this->solver = solver;
     }
