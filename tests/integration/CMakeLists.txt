@@ -3,17 +3,14 @@ file(
     CONFIGURE_DEPENDS *.cpp
 )
 
-set(EXEC_NAME integration)
-set(LIB_NAME ${PROJECT_NAME}_lib)
-set(COMPILE_OPTIONS -fmodules -Wall -Wextra -Wpedantic -Werror)
+set(EXEC_NAME integration_tests)
 
 add_executable(${EXEC_NAME} ${TEST_SOURCES})
-target_compile_options(${EXEC_NAME} PRIVATE ${COMPILE_OPTIONS})
-
 target_link_libraries(
     ${EXEC_NAME}
     PRIVATE
-    ${LIB_NAME}
+    compiler_flags
+    ${PROJECT_NAME}_lib
     GTest::gtest_main
 )
 
