@@ -21,7 +21,7 @@ interviews::ProblemsRepo ProblemsRepoTest::getMultiSourceRepo() {
 
     return {
         std::make_unique<MockProblemsPermStorage>(data1),
-        std::make_unique<MockProblemsPermStorage>(data2),
+        std::make_unique<MockProblemsPermStorage>(data2)
     }; 
 }
 
