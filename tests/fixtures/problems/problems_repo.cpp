@@ -21,7 +21,7 @@ interviews::ProblemsRepo ProblemsRepoTest::getMultiSourceRepo() {
 
     return {
         std::make_unique<MockProblemsPermStorage>(data1),
-        std::make_unique<MockProblemsPermStorage>(data2)
+        std::make_unique<MockProblemsPermStorage>(data2),
     }; 
 }
 
@@ -34,7 +34,7 @@ interviews::ProblemsRepo ProblemsRepoTest::getMultiSourceSomeEmptyRepo() {
         std::make_unique<MockProblemsPermStorage>(data1),
         std::make_unique<MockProblemsPermStorage>(),
         std::make_unique<MockProblemsPermStorage>(data2),
-        std::make_unique<MockProblemsPermStorage>()
+        std::make_unique<MockProblemsPermStorage>(),
     }; 
 }
 
@@ -45,7 +45,7 @@ interviews::ProblemsRepo ProblemsRepoTest::getDuplicatedProblemRepo() {
     
     return {
         std::make_unique<MockProblemsPermStorage>(dataOverwritten),
-        std::make_unique<MockProblemsPermStorage>(finalData)
+        std::make_unique<MockProblemsPermStorage>(finalData),
     };
 }
 
@@ -54,6 +54,6 @@ std::unordered_map<std::string, std::string> ProblemsRepoTest::getData() {
         {"Problem_A", "Description A"},
         {"Problem B", "Description B"},
         {"Problem_C", "Description_C"},
-        {"Problem D", "Description_D"}
+        {"Problem D", "Description_D"},
     };
 }
