@@ -127,7 +127,7 @@ TEST_F(ProblemsRepoTest, ThreadSafety_ConcurrentAccess) {
     constexpr int num_threads{ 4 };
     constexpr int calls_per_thread{ 25 };
 
-    std::vector<std::thread> threads;
+    std::vector<std::jthread> threads;
     std::atomic successful_calls{ 0 };
     
     for (size_t i{ 0 }; i != num_threads; ++i) {

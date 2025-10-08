@@ -9,16 +9,18 @@ module;
 #include <vector>
 
 import IProblemsPermStorage;
+import StringUnorderedMap;
 
 export module ProblemsRepo;
 
 namespace interviews {
-    using ProblemsMap = std::map<std::string, std::string>;
-    using ProblemsUnorderedMap = std::unordered_map<std::string, std::string>;
+    using ProblemsMap = std::map<std::string, std::string, std::less<>>;
+    using ProblemsUnorderedMap = StringUnorderedMap<std::string>;
 
     export class ProblemsRepo {
     public:
-        ProblemsRepo(std::initializer_list<std::unique_ptr<IProblemsPermStorage>> sources = {});
+        ProblemsRepo() = default;
+        ProblemsRepo(std::initializer_list<std::unique_ptr<IProblemsPermStorage>>);
 
         ProblemsMap get(size_t maxSize = 0, size_t offset = 0) const;
 

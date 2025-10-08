@@ -8,6 +8,7 @@
 #include "mocks/problems/problems_perm_storage.hpp"
 
 import ProblemsRepo;
+import StringUnorderedMap;
 
 class ProblemsRepoTest : public ::testing::Test {
 public:
@@ -17,5 +18,5 @@ public:
     interviews::ProblemsRepo getMultiSourceSomeEmptyRepo();
     interviews::ProblemsRepo getDuplicatedProblemRepo();
 
-    std::unordered_map<std::string, std::string> getData();
+    interviews::StringUnorderedMap<std::string> getData();
 };

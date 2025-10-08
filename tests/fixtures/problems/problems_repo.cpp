@@ -5,6 +5,7 @@
 #include "mocks/problems/problems_perm_storage.hpp"
 
 import ProblemsRepo;
+import StringUnorderedMap;
 
 interviews::ProblemsRepo ProblemsRepoTest::getEmptySourceRepo() {
     return {std::make_unique<MockProblemsPermStorage>()};
@@ -16,8 +17,8 @@ interviews::ProblemsRepo ProblemsRepoTest::getSingleSourceRepo() {
 
 interviews::ProblemsRepo ProblemsRepoTest::getMultiSourceRepo() {
     auto data{ getData() };
-    std::unordered_map<std::string, std::string> data1(data.begin(), std::next(data.begin(), 2));
-    std::unordered_map<std::string, std::string> data2(std::next(data.begin(), 2), data.end());
+    interviews::StringUnorderedMap<std::string> data1(data.begin(), std::next(data.begin(), 2));
+    interviews::StringUnorderedMap<std::string> data2(std::next(data.begin(), 2), data.end());
 
     return {
         std::make_unique<MockProblemsPermStorage>(data1),
@@ -27,8 +28,8 @@ interviews::ProblemsRepo ProblemsRepoTest::getMultiSourceRepo() {
 
 interviews::ProblemsRepo ProblemsRepoTest::getMultiSourceSomeEmptyRepo() {
     auto data{ getData() };
-    std::unordered_map<std::string, std::string> data1(data.begin(), std::next(data.begin(), 2));
-    std::unordered_map<std::string, std::string> data2(std::next(data.begin(), 2), data.end());
+    interviews::StringUnorderedMap<std::string> data1(data.begin(), std::next(data.begin(), 2));
+    interviews::StringUnorderedMap<std::string> data2(std::next(data.begin(), 2), data.end());
 
     return {
         std::make_unique<MockProblemsPermStorage>(data1),
@@ -49,7 +50,7 @@ interviews::ProblemsRepo ProblemsRepoTest::getDuplicatedProblemRepo() {
     };
 }
 
-std::unordered_map<std::string, std::string> ProblemsRepoTest::getData() {
+interviews::StringUnorderedMap<std::string> ProblemsRepoTest::getData() {
     return {
         {"Problem_A", "Description A"},
         {"Problem B", "Description B"},

@@ -1,11 +1,12 @@
 #include "mocks/problems/problems_perm_storage.hpp"
 
+import StringUnorderedMap;
 
-MockProblemsPermStorage::MockProblemsPermStorage(const std::unordered_map<std::string, std::string>& _problems)
+MockProblemsPermStorage::MockProblemsPermStorage(const interviews::StringUnorderedMap<std::string>& _problems)
     : problems(_problems) {
     }
 
-std::unordered_map<std::string, std::string> MockProblemsPermStorage::get() const {
+interviews::StringUnorderedMap<std::string> MockProblemsPermStorage::get() const {
     return problems;
 }
 

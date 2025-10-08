@@ -4,13 +4,14 @@
 #include <string>
 
 import IProblemsPermStorage;
+import StringUnorderedMap;
 
 class MockProblemsPermStorage : public interviews::IProblemsPermStorage {
 public:
-    MockProblemsPermStorage(const std::unordered_map<std::string, std::string>&problems = {});
+    explicit MockProblemsPermStorage(const interviews::StringUnorderedMap<std::string>& problems = {});
 
-    std::unordered_map<std::string, std::string> get() const;
+    interviews::StringUnorderedMap<std::string> get() const;
 
 private:
-    std::unordered_map<std::string, std::string> problems;
+    interviews::StringUnorderedMap<std::string> problems;
 };
