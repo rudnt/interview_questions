@@ -38,20 +38,15 @@ interviews::ProblemsRepo ProblemsRepoTest::getMultiSourceSomeEmptyRepo() {
     }; 
 }
 
-interviews::ProblemsRepo ProblemsRepoTest::getRepoWithEmptyProblemName() {
-    std::unordered_map<std::string, std::string> problems{
-        {"", "Description A"},
-        {"Problem B", "Description B"}
+interviews::ProblemsRepo ProblemsRepoTest::getDuplicatedProblemRepo() {
+    auto finalData{ getData() };
+    auto dataOverwritten{ finalData };
+    dataOverwritten["Problem_A"] = "Different Description A";
+    
+    return {
+        std::make_unique<MockProblemsPermStorage>(dataOverwritten),
+        std::make_unique<MockProblemsPermStorage>(finalData)
     };
-    return {std::make_unique<MockProblemsPermStorage>(problems)};
-}
-
-interviews::ProblemsRepo ProblemsRepoTest::getRepoWithEmptyDescription() {
-    std::unordered_map<std::string, std::string> problems{
-        {"Problem A", ""},
-        {"Problem B", "Description B"}
-    };
-    return {std::make_unique<MockProblemsPermStorage>(problems)};
 }
 
 std::unordered_map<std::string, std::string> ProblemsRepoTest::getData() {

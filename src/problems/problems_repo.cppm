@@ -35,6 +35,7 @@ namespace interviews {
     std::map<std::string, std::string> ProblemsRepo::getProblems(size_t limit, size_t offset) const {
         std::map<std::string, std::string> allProblems;
         for (const auto& source : sources) {
+            // TODO consider logging warning if problem duplicated
             auto problems{ source->get() };
             allProblems.insert(problems.begin(), problems.end());
         }

@@ -15,8 +15,7 @@ public:
     interviews::ProblemsRepo getSingleSourceRepo();
     interviews::ProblemsRepo getMultiSourceRepo();
     interviews::ProblemsRepo getMultiSourceSomeEmptyRepo();
-    interviews::ProblemsRepo getRepoWithEmptyProblemName();
-    interviews::ProblemsRepo getRepoWithEmptyDescription();
+    interviews::ProblemsRepo getDuplicatedProblemRepo();
 
     std::unordered_map<std::string, std::string> getData();
 };

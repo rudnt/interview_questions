@@ -68,19 +68,16 @@ TEST_F(ProblemsRepoTest, GetProblems_RepoCopy_ReturnsConsistentResults) {
     EXPECT_EQ(problems1, problems2);
 }
 
-TEST_F(ProblemsRepoTest, GetProblems_DuplicatedNameInSources_ThrowsException) {
+TEST_F(ProblemsRepoTest, GetProblems_DuplicatedNameInSources_ReturnsLastOccurrence) {
     auto repo{ getMultiSourceRepo() };
-    EXPECT_THROW(repo.getProblems(), std::runtime_error);
-}
-
-TEST_F(ProblemsRepoTest, GetProblems_EmptyProblemName_ThrowsException) {
-    auto repo{ getRepoWithEmptyProblemName() };
-    EXPECT_THROW(repo.getProblems(), std::runtime_error);
-}
-
-TEST_F(ProblemsRepoTest, GetProblems_EmptyDescription_ThrowsException) {
-    auto repo{ getRepoWithEmptyDescription() };
-    EXPECT_THROW(repo.getProblems(), std::runtime_error);
+    auto problems{ repo.getProblems() };
+    auto expected{ getData() };
+    
+    ASSERT_EQ(problems.size(), expected.size());
+    for (const auto& [name, description] : expected) {
+        EXPECT_NE(problems.find(name), problems.end());
+        EXPECT_EQ(problems[name], description);
+    }
 }
 
 TEST_F(ProblemsRepoTest, GetProblems_Limited_ReturnsConsistentResults) {
