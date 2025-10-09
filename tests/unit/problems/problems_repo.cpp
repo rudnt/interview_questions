@@ -135,7 +135,7 @@ TEST_F(ProblemsRepoTest, ThreadSafety_ConcurrentAccess) {
             for (size_t j{ 0 }; j != calls_per_thread; ++j) {
                 try {
                     auto repo{ getMultiSourceRepo() };
-                    auto problems{ repo.get()};
+                    auto problems{ repo.get() };
                     if (!problems.empty()) {
                         successful_calls++;
                     }
