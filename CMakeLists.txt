@@ -31,10 +31,6 @@ target_compile_options(
 
 add_subdirectory(src)
 
-# TODO introduce optimization levels and different flags for debug/release
-# think it through - maybe create "Debug", "DebugTests", "Release" and "ReleaseTests" flags?
-# consider how to integrate it with CMake tools
-
 if(BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)

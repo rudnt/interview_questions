@@ -20,11 +20,9 @@ namespace interviews {
 
 namespace interviews {
     void App::run() {
-        std::cout << std::endl;
-        std::cout << "--- Interview questions ---" << std::endl;
-        std::cout << std::endl;
-        
         auto factory { MediatorFactory() };
+        std::cout << "--- Interview questions ---" << std::endl << std::endl;
+
         auto mediator { factory.get(ProblemName::TwoTourists) };
         mediator->generateProblemData();
         mediator->solveProblem();
@@ -39,6 +37,5 @@ namespace interviews {
         std::cout << "Problem name: MaxSum" << std::endl;
         std::cout << "Digits:       " << mediator->getProblemData() << std::endl;
         std::cout << "Max sum:      " << mediator->getSolution() << std::endl;
-        std::cout << std::endl;
     }
 }

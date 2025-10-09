@@ -13,6 +13,5 @@ target_link_libraries(
     ${PROJECT_NAME}_lib
     GTest::gtest_main
 )
-target_include_directories(${EXEC_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/..)
 
 add_test(NAME ${EXEC_NAME} COMMAND ${EXEC_NAME})
