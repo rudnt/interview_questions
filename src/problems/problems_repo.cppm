@@ -70,6 +70,7 @@ namespace interviews {
         try {
             return source->get();
         } catch (...) {
+            // TODO log error
             return {};
         }
     }
