@@ -17,6 +17,8 @@ public:
     interviews::ProblemsRepo getMultiSourceRepo();
     interviews::ProblemsRepo getMultiSourceSomeEmptyRepo();
     interviews::ProblemsRepo getDuplicatedProblemRepo();
+    interviews::ProblemsRepo getOneThrowingMultiSourceRepo();
+    interviews::ProblemsRepo getAllThrowingMultiSourceRepo();
 
     interviews::StringUnorderedMap<std::string> getData();
 };

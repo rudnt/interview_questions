@@ -152,3 +152,21 @@ TEST_F(ProblemsRepoTest, ThreadSafety_ConcurrentAccess) {
     
     EXPECT_EQ(successful_calls.load(), num_threads * calls_per_thread);
 }
+
+TEST_F(ProblemsRepoTest, GetProblems_AllSourcesThrowException_ReturnsEmptyCollection) {
+    auto repo{ getAllThrowingMultiSourceRepo() };
+    auto problems{ repo.get() };
+    ASSERT_EQ(problems.size(), 0);
+}
+
+TEST_F(ProblemsRepoTest, GetProblems_OnlyOneSourceThrowsException_ReturnsValidProblems) {
+    auto repo{ getOneThrowingMultiSourceRepo() };
+    auto problems{ repo.get() };
+    auto expected{ getData() };
+
+    ASSERT_EQ(problems.size(), expected.size());
+    for (const auto& [name, description] : expected) {
+        EXPECT_NE(problems.find(name), problems.end());
+        EXPECT_EQ(problems[name], description);
+    }
+}
