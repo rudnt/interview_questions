@@ -9,10 +9,26 @@ import IGenerator;
 export module TwoTouristsGenerator;
 
 namespace interviews {
+    /**
+     * @brief Generator for the TwoTourists problem that creates random elevation sequences.
+     * 
+     * Generates random vectors of integers representing elevation data for the
+     * TwoTourists problem, which involves finding the maximum distance tourists
+     * can travel while maintaining specific elevation constraints.
+     */
     export class TwoTouristsGenerator : public IGenerator<std::vector<int>> {
     public:
+        /**
+         * @brief Constructs a TwoTouristsGenerator with configurable size bounds.
+         * @param maxSize Maximum number of elevation points to generate.
+         * @throws std::invalid_argument if maxSize is negative.
+         */
         explicit TwoTouristsGenerator(int maxSize = 100);
 
+        /**
+         * @brief Generates a random sequence of elevation values.
+         * @return std::vector<int> A vector of random integer elevations.
+         */
         std::vector<int> generate() override;
 
     private:

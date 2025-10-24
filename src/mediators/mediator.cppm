@@ -14,18 +14,55 @@ import ToString;
 export module Mediator;
 
 namespace interviews {
+    /**
+     * @brief Concrete implementation of IMediator for coordinating problem solving.
+     * 
+     * Manages the lifecycle of problem data and solutions, coordinating between
+     * a generator and a solver. Ensures proper state management and validates
+     * that operations occur in the correct order.
+     * 
+     * @tparam ArgsType The type of problem input data.
+     * @tparam ReturnType The type of the solution result.
+     */
     export template<typename ArgsType, typename ReturnType>
     class Mediator: public IMediator {
     public:
+        /**
+         * @brief Constructs a Mediator with a generator and solver.
+         * @param generator Shared pointer to the problem data generator.
+         * @param solver Shared pointer to the problem solver.
+         * @throws std::invalid_argument if generator or solver is nullptr.
+         */
         Mediator(
             std::shared_ptr<IGenerator<ArgsType>> generator,
             std::shared_ptr<ISolver<ArgsType, ReturnType>> solver
         );
 
+        /**
+         * @brief Generates new problem input data.
+         * 
+         * Resets any existing solution state and creates fresh problem data.
+         */
         void generateProblemData() override;
+        
+        /**
+         * @brief Solves the problem using the currently generated data.
+         * @throws InvalidStateError if problem data hasn't been generated yet.
+         */
         void solveProblem() override;
 
+        /**
+         * @brief Retrieves the generated problem data as a string.
+         * @return std::string String representation of the problem data.
+         * @throws InvalidStateError if problem data hasn't been generated yet.
+         */
         std::string getProblemData() const override;
+        
+        /**
+         * @brief Retrieves the computed solution as a string.
+         * @return std::string String representation of the solution.
+         * @throws InvalidStateError if the problem hasn't been solved yet.
+         */
         std::string getSolution() const override;
 
     private:

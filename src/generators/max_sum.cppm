@@ -8,10 +8,26 @@ import IGenerator;
 export module MaxSumGenerator;
 
 namespace interviews {
+    /**
+     * @brief Generator for the MaxSum problem that creates random digit strings.
+     * 
+     * Generates random strings of digits (0-9) that can be used as input
+     * for the MaxSum problem, which involves finding the maximum sum of
+     * two non-adjacent two-digit numbers.
+     */
     export class MaxSumGenerator : public IGenerator<std::string> {
     public:
+        /**
+         * @brief Constructs a MaxSumGenerator with configurable size bounds.
+         * @param maxSize Maximum length of generated digit strings (must be at least 4).
+         * @throws std::invalid_argument if maxSize is less than 4.
+         */
         explicit MaxSumGenerator(int maxSize = 100);
 
+        /**
+         * @brief Generates a random string of digits.
+         * @return std::string A string containing random digits 0-9.
+         */
         std::string generate() override;
 
     private:

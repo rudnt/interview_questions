@@ -17,8 +17,20 @@ import TwoTouristsGenerator;
 export module MediatorFactory;
 
 namespace interviews {
+    /**
+     * @brief Factory for creating mediator instances for different interview problems.
+     * 
+     * Provides a centralized way to create properly configured mediators with
+     * appropriate generators and solvers for each problem type.
+     */
     export class MediatorFactory {
     public:
+        /**
+         * @brief Creates a mediator for the specified problem.
+         * @param name The type of problem to create a mediator for.
+         * @return std::unique_ptr<IMediator> A configured mediator instance.
+         * @throws NotImplementedError if the problem type is not supported.
+         */
         std::unique_ptr<IMediator> get(ProblemName);
     };
 }

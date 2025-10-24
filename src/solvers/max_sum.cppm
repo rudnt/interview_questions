@@ -10,8 +10,21 @@ import ISolver;
 export module MaxSumSolver;
 
 namespace interviews {
+    /**
+     * @brief Solver for the MaxSum problem.
+     * 
+     * Finds the maximum sum of two non-adjacent two-digit numbers that can be
+     * formed from a string of digits. A two-digit number is formed by taking
+     * consecutive digits from the string.
+     */
     export class MaxSumSolver : public ISolver<std::string, int> {
     public:
+        /**
+         * @brief Solves the MaxSum problem for the given digit string.
+         * @param digits String of digits (0-9) to analyze.
+         * @return int The maximum sum of two non-adjacent two-digit numbers.
+         * @throws std::invalid_argument if the string has fewer than 4 digits.
+         */
         int solve(const std::string&) override;
         
     private:
