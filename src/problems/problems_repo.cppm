@@ -17,11 +17,32 @@ namespace interviews {
     using ProblemsMap = std::map<std::string, std::string, std::less<>>;
     using ProblemsUnorderedMap = StringUnorderedMap<std::string>;
 
+    /**
+     * @brief Repository for managing and retrieving problems from multiple storage sources.
+     * 
+     * ProblemsRepo aggregates problems from various permanent storage implementations,
+     * fetching them asynchronously and providing pagination support.
+     */
     export class ProblemsRepo {
     public:
         ProblemsRepo() = default;
+        
+        /**
+         * @brief Constructs a ProblemsRepo with multiple storage sources.
+         * @param sources Initializer list of unique pointers to IProblemsPermStorage implementations.
+         */
         ProblemsRepo(std::initializer_list<std::unique_ptr<IProblemsPermStorage>>);
 
+        /**
+         * @brief Retrieves problems from all configured storage sources with optional pagination.
+         * 
+         * Fetches problems asynchronously from all sources, merges them into a sorted map,
+         * and applies offset and size limits for pagination.
+         * 
+         * @param maxSize Maximum number of problems to return (0 = no limit).
+         * @param offset Number of problems to skip from the beginning (0 = no offset).
+         * @return ProblemsMap Ordered map of problem names to problem data.
+         */
         ProblemsMap get(size_t maxSize = 0, size_t offset = 0) const;
 
     private:

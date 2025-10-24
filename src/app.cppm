@@ -12,8 +12,19 @@ import ProblemName;
 
 export module App;
 namespace interviews {
+    /**
+     * @brief Main application class for running interview question demonstrations.
+     * 
+     * Orchestrates the execution of various interview problems, generating input data,
+     * solving problems, and displaying results.
+     */
     export class App {
     public:
+        /**
+         * @brief Executes the application, running all configured interview problems.
+         * 
+         * Generates problem data, solves each problem, and prints the results to stdout.
+         */
         void run();
     };
 }
