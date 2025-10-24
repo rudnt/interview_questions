@@ -10,3 +10,6 @@ interviews::StringUnorderedMap<std::string> MockProblemsPermStorage::get() const
     return problems;
 }
 
+interviews::StringUnorderedMap<std::string> ThrowingMockProblemsPermStorage::get() const {
+    throw std::runtime_error("Simulated storage failure");
+}

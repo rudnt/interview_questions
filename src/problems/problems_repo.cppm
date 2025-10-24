@@ -31,7 +31,7 @@ namespace interviews {
         void erase(ProblemsMap&, size_t) const;
         void limit(ProblemsMap&, size_t) const;
 
-        std::vector<std::future<ProblemsUnorderedMap>> fetchAsync() const;
+        std::vector<std::future<ProblemsUnorderedMap>> dispatchFetch() const;
         ProblemsMap gather(std::vector<std::future<ProblemsUnorderedMap>>&) const;
     };
 }
@@ -52,15 +52,22 @@ namespace interviews {
     }
 
     ProblemsMap ProblemsRepo::fetch() const {
-        auto futures{ fetchAsync() };
-        return gather(futures);
+        auto tasks{ dispatchFetch() };
+        return gather(tasks);
     }
 
-    std::vector<std::future<ProblemsUnorderedMap>> ProblemsRepo::fetchAsync() const {
+    std::vector<std::future<ProblemsUnorderedMap>> ProblemsRepo::dispatchFetch() const {
         std::vector<std::future<ProblemsUnorderedMap>> futures;
         futures.reserve(sources.size());
         for (const auto& source : sources) {
-            futures.push_back(std::async(std::launch::async, &IProblemsPermStorage::get, source.get()));
+            futures.push_back(std::async(std::launch::async, [&source] {
+                try {
+                    return source->get();
+                } catch (...) {
+                    // TODO log error
+                    return ProblemsUnorderedMap{};
+                }
+            }));
         }
         return futures;
     }

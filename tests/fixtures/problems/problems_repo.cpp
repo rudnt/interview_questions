@@ -50,6 +50,25 @@ interviews::ProblemsRepo ProblemsRepoTest::getDuplicatedProblemRepo() {
     };
 }
 
+interviews::ProblemsRepo ProblemsRepoTest::getOneThrowingMultiSourceRepo() {
+    auto data{ getData() };
+    interviews::StringUnorderedMap<std::string> data1(data.begin(), std::next(data.begin(), 2));
+    interviews::StringUnorderedMap<std::string> data2(std::next(data.begin(), 2), data.end());
+
+    return {
+        std::make_unique<MockProblemsPermStorage>(data1),
+        std::make_unique<ThrowingMockProblemsPermStorage>(),
+        std::make_unique<MockProblemsPermStorage>(data2),
+    }; 
+}
+
+interviews::ProblemsRepo ProblemsRepoTest::getAllThrowingMultiSourceRepo() {
+    return {
+        std::make_unique<ThrowingMockProblemsPermStorage>(),
+        std::make_unique<ThrowingMockProblemsPermStorage>(),
+    }; 
+}
+
 interviews::StringUnorderedMap<std::string> ProblemsRepoTest::getData() {
     return {
         {"Problem_A", "Description A"},

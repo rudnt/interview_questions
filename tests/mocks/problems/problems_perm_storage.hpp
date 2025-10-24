@@ -15,3 +15,10 @@ public:
 private:
     interviews::StringUnorderedMap<std::string> problems;
 };
+
+class ThrowingMockProblemsPermStorage : public interviews::IProblemsPermStorage {
+public:
+    ThrowingMockProblemsPermStorage() = default;
+
+    interviews::StringUnorderedMap<std::string> get() const override;
+};
