@@ -97,7 +97,6 @@ interview_questions/
 │   ├── integration/        # Integration tests
 │   ├── mocks/              # Mock objects
 │   └── fixtures/           # Test fixtures
-├── resources/              # Resource files
 └── build/                  # Build output (generated)
 ```
 
